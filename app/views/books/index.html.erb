@@ -1,5 +1,0 @@
-<h1>Library</h1>
-<% @books.each do |b| %>
-  <%= cl_image_tag b.cover %>
-  <p><%= link_to b.title, book_path(b) %></p>
-<% end %>
