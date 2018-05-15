@@ -32,6 +32,11 @@ gem 'jbuilder', '~> 2.5'
 ruby '2.4.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'simple_form'
+gem 'bootstrap-sass'
+gem 'figaro'
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
