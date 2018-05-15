@@ -17,4 +17,8 @@ class Api::V1::BaseController < ActionController::Base
     end
     render json: response, status: :internal_server_error
   end
+
+  def current_user
+    @current_user ||= User.find(params[:user_id])
+  end
 end
