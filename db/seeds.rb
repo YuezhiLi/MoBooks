@@ -29,7 +29,7 @@ users.each do |u|
       title: Faker::Book.title,
       author: Faker::Book.author,
       description: Faker::Dune.quote,
-      remote_cover_url: "https://picsum.photos/400/600?image=#{(1..500).to_a.sample}"
+      remote_cover_url: "https://picsum.photos/400/600?image=#{(1..200).to_a.sample}"
       )
   end
   puts "5 books created for #{u.username}!"
