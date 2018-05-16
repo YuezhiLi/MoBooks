@@ -1,4 +1,4 @@
-class Api::V1::EventsController < Api::V1::BaseController
+class Api::V1::LoginController < Api::V1::BaseController
   URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
   def wechat_params
    {
