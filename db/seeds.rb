@@ -22,8 +22,8 @@ puts "Users created!"
 
 users = User.all
 users.each do |u|
-  puts "Creating 10 books for #{u.username}..."
-  10.times do
+  puts "Creating 5 books for #{u.username}..."
+  5.times do
     Book.create(
       user_id: u.id,
       title: Faker::Book.title,
@@ -32,5 +32,5 @@ users.each do |u|
       remote_cover_url: "https://picsum.photos/400/600?image=#{(1..500).to_a.sample}"
       )
   end
-  puts "10 books created for #{u.username}!"
+  puts "5 books created for #{u.username}!"
 end
