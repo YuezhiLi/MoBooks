@@ -1,10 +1,6 @@
-json.book do
-  json.title @event.book.title
-  json.cover @event.book.cover_url
+json.event do
+  json.id event.id
+  json.book event.book
+  json.owner event.user
 end
 
-json.owner do
-  json.username @event.user.username
-  json.contact @event.user.contact
-  json.address @event.user.address
-end
