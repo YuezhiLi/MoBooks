@@ -40,6 +40,14 @@ class Api::V1::BooksController < Api::V1::BaseController
     head :no_content
   end
 
+  def search
+    @keyword = params[:keyword]
+    @books = []
+    Book.all.each do |book|
+      @books << book if book.title.downcase.include?(@keyword.downcase) || book.author.downcase.include?(@keyword.downcase)
+    end
+  end
+
   private
 
   def book_params
