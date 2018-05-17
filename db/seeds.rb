@@ -15,8 +15,8 @@ puts "Creating 5 users..."
   User.create(
     address: "#{Faker::Address.street_address} #{Faker::Address.city}",
     username: Faker::Internet.user_name,
-    contact: Faker::Internet.email
-    )
+    contact: Faker::Internet.email,
+    open_id: Faker::Number.between(1..1000))
 end
 puts "Users created!"
 
