@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/login', to: "login#login"
       get 'my_books', to: 'books#my_books'
+      get 'search/:keyword', to: 'books#search'
       resources :books do
         resources :events, only: [:show, :create, :update] do
           resources :reviews, only: [:create, :update, :show, :destroy]
