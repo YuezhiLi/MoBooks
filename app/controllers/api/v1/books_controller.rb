@@ -2,7 +2,9 @@ class Api::V1::BooksController < Api::V1::BaseController
   before_action :set_book, only: [ :show, :update, :destroy ]
 
   def index
-    @books = Book.where(available: true)
+    @user = @current_user
+    all_books = Book.where.not(user_id: @user.id)
+    @books = all_books.select { |b| b.available }
   end
 
   def show
