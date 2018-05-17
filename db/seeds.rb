@@ -34,3 +34,10 @@ users.each do |u|
   end
   puts "5 books created for #{u.username}!"
 end
+
+user = User.last
+book1 = Book.last
+book2 = Book.first
+Event.create(user: user, book: book1)
+Event.create(user: user, book: book2)
+puts "the last user borrowed 2 books!"
