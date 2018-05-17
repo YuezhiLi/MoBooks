@@ -11,8 +11,8 @@ class Api::V1::BooksController < Api::V1::BaseController
   def my_books
     @user = @current_user
     @my_books = @user.books
-    @my_reading_list = @user.borrowed_books.select { |b| b.events.last.user_id == @user.id && b.available == false }
-    @my_read_list = @user.borrowed_books.select { |b| b.events.last.user_id != @user.id || b.available == true }
+    @my_reading_list = @user.borrowed_books.select { |b| b.events.last.user_id == @user.id && b.events.last.borrowed == true }
+    @my_read_list = @user.borrowed_books.select { |b| b.events.last.user_id != @user.id || b.events.last.borrowed == false }
   end
 
   def create
