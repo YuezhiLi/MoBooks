@@ -17,4 +17,5 @@ class Api::V1::EventsController < Api::V1::BaseController
     @event.update(borrowed: false)
     @event.book.update(available: true)
   end
+
 end
