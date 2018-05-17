@@ -9,8 +9,7 @@ class Api::V1::BooksController < Api::V1::BaseController
   end
 
   def my_books
-    # @user = @current_user
-    @user = User.last
+    @user = @current_user
     @my_books = @user.books
     @my_reading_list = @user.borrowed_books.select { |b| b.events.last.user_id == @user.id && b.events.last.borrowed == true }
     @my_read_list = @user.borrowed_books.select { |b| b.events.last.user_id != @user.id || b.events.last.borrowed == false }
@@ -18,6 +17,7 @@ class Api::V1::BooksController < Api::V1::BaseController
 
   def create
     @book = Book.new(book_params)
+    @book.user = @current_user
     if @book.save
       render :my_books
     else

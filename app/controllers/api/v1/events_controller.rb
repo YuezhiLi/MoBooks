@@ -1,7 +1,11 @@
 class Api::V1::EventsController < Api::V1::BaseController
   def create
-    @event = Event.create(user_id: @current_user.id, book_id: params[:book_id])
-    render :show
+    @book = Book.find(params[:book_id])
+    if @book.available
+      @event = Event.create(user_id: @current_user.id, book_id: params[:book_id])
+      @event.book.update(available: false)
+      render :show
+    end
   end
 
   def show
@@ -10,7 +14,7 @@ class Api::V1::EventsController < Api::V1::BaseController
 
   def update
     @event = Event.find(params[:id])
-    @event.borrowed = false
-    @event.save
+    @event.update(borrowed: false)
+    @event.book.update(available: true)
   end
 end
