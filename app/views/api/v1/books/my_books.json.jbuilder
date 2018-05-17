@@ -2,6 +2,7 @@ json.my_books do
   json.array! @my_books do |book|
     json.id book.id
     json.title book.title
+    json.available? book.available
     json.event book.events.last
   end
 end
