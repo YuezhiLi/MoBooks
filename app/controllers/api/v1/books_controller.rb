@@ -2,7 +2,7 @@ class Api::V1::BooksController < Api::V1::BaseController
   before_action :set_book, only: [ :show, :update, :destroy ]
 
   def index
-    @user = @current_user
+    @user = current_user
     all_books = Book.where.not(user_id: @user.id)
     @books = all_books.select { |b| b.available }
   end
@@ -11,7 +11,7 @@ class Api::V1::BooksController < Api::V1::BaseController
   end
 
   def my_books
-    @user = @current_user
+    @user = current_user
     @my_books = @user.books
     @my_reading_list = @user.borrowed_books.select { |b| b.events.last.user_id == @user.id && b.events.last.borrowed == true }
     @my_read_list = @user.borrowed_books.select { |b| b.events.last.user_id != @user.id || b.events.last.borrowed == false }

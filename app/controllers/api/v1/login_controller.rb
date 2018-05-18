@@ -21,4 +21,3 @@ class Api::V1::LoginController < Api::V1::BaseController
       }
   end
 end
-

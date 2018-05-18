@@ -13,26 +13,27 @@ User.delete_all
 puts "Creating 5 users..."
 5.times do
   User.create(
-    address: "#{Faker::Address.street_address} #{Faker::Address.city}",
-    username: Faker::Internet.user_name,
-    contact: Faker::Internet.email,
-    open_id: Faker::Number.between(1..1000))
+    # address: "#{Faker::Address.street_address} #{Faker::Address.city}",
+    nickName: Faker::Internet.user_name,
+    contact: Faker::Internet.email
+    # open_id: Faker::Number.between(1..1000)
+    )
 end
 puts "Users created!"
 
 users = User.all
 users.each do |u|
-  puts "Creating 5 books for #{u.username}..."
+  puts "Creating 5 books for #{u.nickName}..."
   5.times do
     Book.create(
       user_id: u.id,
       title: Faker::Book.title,
       author: Faker::Book.author,
       description: Faker::Dune.quote,
-      remote_cover_url: "https://picsum.photos/400/600?image=#{(1..200).to_a.sample}"
+      remote_cover_url: "https://picsum.photos/400/600?image=#{(1..10).to_a.sample}"
       )
   end
-  puts "5 books created for #{u.username}!"
+  puts "5 books created for #{u.nickName}!"
 end
 
 user = User.last
