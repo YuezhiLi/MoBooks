@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517072548) do
+ActiveRecord::Schema.define(version: 20180518030553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,15 @@ ActiveRecord::Schema.define(version: 20180517072548) do
 
   create_table "users", force: :cascade do |t|
     t.string "open_id"
-    t.string "name"
-    t.string "address"
-    t.string "username"
-    t.string "avatar"
+    t.string "nickName"
+    t.string "avatarUrl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "contact"
+    t.integer "gender"
+    t.string "country"
+    t.string "province"
+    t.string "city"
   end
 
   add_foreign_key "books", "users"
